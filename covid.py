@@ -2,6 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 # import seaborn as sns
 import numpy as np
+from datetime import date
 
 
 # load the time series data into a pandas data structure
@@ -56,13 +57,15 @@ def plot_confirmed_cases_by_thresh(country_info,country_list,case_thresh,date_of
 	plt.semilogy(range(date_offset,end_date - np.min(start_date)),shaped_data.T, marker='o')
 	# sns.lineplot(shaped_data.T)
 	plt.legend(country_list)
+	plt.title('growth in COVID-19 cases as of ' + str(date.today()))
 	if per_capita is None:
 		plt.ylabel('number of confirmed COVID-19 cases')
 		plt.xlabel('days since ' + str(case_thresh) + ' cases reported')
+		plt.savefig('cases.png')
 	else:
 		plt.ylabel('number of confirmed COVID-19 cases per capita (millions)')
 		plt.xlabel('days since ' + str(case_thresh) + 'cases per capita (millions) reported')
-	plt.title('growth in COVID-19 cases as of 11-03-20')
+		plt.savefig('cases_capita.png')
 	plt.show()
 
 if __name__=='__main__':
@@ -74,5 +77,5 @@ if __name__=='__main__':
 
 	# plot_confirmed_cases(country_info,country_list)
 	# plot_confirmed_cases_by_thresh(country_info,country_list,case_thresh=200,date_offset=-3)
-	# plot_confirmed_cases_by_thresh(country_info,country_list,case_thresh=200,date_offset=-3)
+	plot_confirmed_cases_by_thresh(country_info,country_list,case_thresh=200,date_offset=0)
 	plot_confirmed_cases_by_thresh(country_info,country_list,case_thresh=1,date_offset=-3,per_capita=country_pop)
