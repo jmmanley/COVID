@@ -5,7 +5,7 @@ import numpy as np
 
 
 # load the time series data into a pandas data structure
-def load_data(filename='time_series_19-covid-Confirmed.csv'):
+def load_data(filename='COVID-19/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv'):
 	df = pd.read_csv(filename)
 	return df.drop(columns=['Lat','Long','Province/State'])
 
@@ -66,8 +66,8 @@ def plot_confirmed_cases_by_thresh(country_info,country_list,case_thresh,date_of
 	plt.show()
 
 if __name__=='__main__':
-	country_list = ['Italy','Iran (Islamic Republic of)','US','Germany','France','Spain','Republic of Korea']
-	country_pop = [60.48,81.16,327.2,82.79,66.99,46.66,51.47]
+	country_list = ['Italy','Iran','US','Germany','France','Spain','Korea, South', 'China', 'Japan']
+	country_pop = [60.48,81.16,327.2,82.79,66.99,46.66,51.47,1386,126.8]
 	df = load_data()
 
 	country_info = get_country_data(df,country_list)
@@ -76,4 +76,3 @@ if __name__=='__main__':
 	# plot_confirmed_cases_by_thresh(country_info,country_list,case_thresh=200,date_offset=-3)
 	# plot_confirmed_cases_by_thresh(country_info,country_list,case_thresh=200,date_offset=-3)
 	plot_confirmed_cases_by_thresh(country_info,country_list,case_thresh=1,date_offset=-3,per_capita=country_pop)
-
