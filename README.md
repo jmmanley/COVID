@@ -11,3 +11,7 @@ COVID-19 generally follows a similar growth pattern. The below is updated on Mar
 If you look at cases per capita, the USA is growing just as quickly but is not nearly as saturated (so far).
 
 ![Number of cases, in days since >200 cases](cases_capita.png)
+
+New York state seems to be growing much faster than the formerly worrying Washington state.
+
+![states](cases_states.png)
